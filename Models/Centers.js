@@ -14,6 +14,9 @@ const CenterSchema = new Schema({
   slot: {
     type: Number,
   },
+  date: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("center", CenterSchema);

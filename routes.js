@@ -1,6 +1,6 @@
 const express = require("express");
 const UserCollection = require("./Models/User");
-const CenterCollection = require("./Models/Centers,js");
+const CenterCollection = require("./Models/Centers.js");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
@@ -119,6 +119,7 @@ router.post(
     body("address"),
     body("contact"),
     body("slot"),
+    body("date")
   ],
   async (req, res) => {
    
@@ -129,7 +130,8 @@ router.post(
         name: req.body.name,
         address: req.body.address,
         contact: req.body.contact,
-        slot: req.body.slot
+        slot: req.body.slot,
+        date:req.body.date
       });
 
      res.json("added");
