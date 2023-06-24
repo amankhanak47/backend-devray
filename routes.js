@@ -147,25 +147,39 @@ router.post(
 
 
 // update treasure route
-// router.post("/editcenter",  [
-//     body("name"),
-//     body("address"),
-//     body("contact"),
-//     body("slot"),
-//   ],async (req, res) => {
-//   try {
-//    let center = await CenterCollection.findOne({ name:req.body.name });
-//       center.name = req.body.name,
-//       center.address = res.body.address,
-//       center.contact = req.body.contact,
-//       center.slot=req.body.slot,
-//     await center.save()
-//     res.json(center);
-//   }
-//   catch (error) {
-//     console.log(error)
-//   }
-// })
+router.post("/editcenter",  [
+    body("name"),
+    body("address"),
+    body("contact"),
+    body("slot"),
+  ],async (req, res) => {
+  try {
+   let center = await CenterCollection.findOne({ name:req.body.name });
+      center.name = req.body.name,
+      center.address = res.body.address,
+      center.contact = req.body.contact,
+      center.slot=req.body.slot,
+    await center.save()
+    res.json(center);
+  }
+  catch (error) {
+    console.log(error)
+  }
+})
+
+
+router.post("/deletecenter",  [
+body("name")
+  ],async (req, res) => {
+  try {
+   let center = await CenterCollection.deleteOne({ name:req.body.name });
+     
+    res.json("deleted");
+  }
+  catch (error) {
+    console.log(error)
+  }
+})
 
 //get all  leaderboard
 router.post(
